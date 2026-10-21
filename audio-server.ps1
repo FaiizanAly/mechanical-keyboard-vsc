@@ -13,13 +13,10 @@ for ($i = 0; $i -lt $POOL_SIZE; $i++) {
 }
 $idx = 0
 
-# Signal ready to the extension
-[Console]::Out.Flush()
-
 while ($true) {
     try {
         $path = [Console]::ReadLine()
-        # null means stdin was closed — exit cleanly
+        # null means stdin was closed / extension deactivated — exit cleanly
         if ($null -eq $path) { break }
         $path = $path.Trim()
         if ($path.Length -eq 0) { continue }
@@ -31,5 +28,12 @@ while ($true) {
         $idx = ($idx + 1) % $POOL_SIZE
     } catch {
         # Silently ignore any playback errors and keep running
+    }
+}
+
+# Clean disposal of native Windows sound handles on exit
+for ($i = 0; $i -lt $POOL_SIZE; $i++) {
+    if ($players[$i]) {
+        try { $players[$i].Dispose() } catch {}
     }
 }
