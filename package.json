@@ -1,0 +1,87 @@
+{
+  "name": "mechanical-vsc",
+  "displayName": "Mechanical VSC",
+  "description": "Virtual AULA F75 mechanical keyboard — plays thocky NK Cream switch sounds on every keystroke with zero latency",
+  "version": "1.0.0",
+  "publisher": "keyboardsounds",
+  "engines": {
+    "vscode": "^1.140.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "keyboard",
+    "sound",
+    "mechanical",
+    "AULA",
+    "F75",
+    "typing",
+    "thock",
+    "click"
+  ],
+  "icon": "icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aulaF75.toggle",
+        "title": "AULA F75: Toggle Keyboard Sounds",
+        "icon": "$(unmute)"
+      },
+      {
+        "command": "aulaF75.setVolume",
+        "title": "AULA F75: Set Volume"
+      },
+      {
+        "command": "aulaF75.showStatus",
+        "title": "AULA F75: Show Status"
+      }
+    ],
+    "configuration": {
+      "title": "AULA F75 Mechanical Keyboard",
+      "properties": {
+        "aulaF75.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable mechanical keyboard sounds"
+        },
+        "aulaF75.volume": {
+          "type": "number",
+          "default": 0.8,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Volume level for keyboard sounds (0.0 - 1.0)"
+        },
+        "aulaF75.randomVariation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add subtle random pitch variation for realistic sound"
+        }
+      }
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "aulaF75.toggle",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/vscode": "^1.140.0",
+    "typescript": "^5.9.3"
+  }
+}
