@@ -1,4 +1,4 @@
-# 🎹 Mechanical VSC (AULA F75)
+# 💻 Mechanical VSC (AULA F75)
 
 > ⚠️ **Important Note:** This is **strictly a VS Code extension**, NOT a system-wide or native desktop app. Sounds will **only** play while you are typing inside VS Code / Cursor editors, not across other system apps or browsers.
 
