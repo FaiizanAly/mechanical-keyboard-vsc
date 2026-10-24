@@ -1,0 +1,13 @@
+# 1. Install dependencies
+npm install
+
+# 2. Compile the extension
+npm run compile
+
+# 3. Generate the VSIX file
+npx --yes @vscode/vsce package
+
+# 4. Install in VS Code
+# Press Ctrl + Shift + P
+# Search: Extensions: Install from VSIX...
+# Select the generated .vsix file
